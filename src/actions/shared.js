@@ -7,7 +7,9 @@ export function handleInitData(){
     return (dispatch) => {
         return _getUsers()
         .then(
+            
             (users) => {
+                console.log(users[0])
                 dispatch(receiveUsers(users))
             }
         )
