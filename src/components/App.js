@@ -1,5 +1,5 @@
 import React from 'react';
-import {handleInitData} from '../actions/shared'
+import {handleInitData, handleInitQuestions} from '../actions/shared'
 import {connect} from 'react-redux'
 import Login from './Login'
 import Home from './Home'
@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 class App extends React.Component{
   componentDidMount(){
     this.props.dispatch(handleInitData())
+    this.props.dispatch(handleInitQuestions())
   }
   render(){
     return (
