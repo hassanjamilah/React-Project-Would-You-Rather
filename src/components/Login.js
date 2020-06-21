@@ -1,37 +1,43 @@
-import React , {Component} from 'react'
-import {connect} from 'react-redux'
-class Login extends Component{
-    componentDidMount(){
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {setAuthedUser} from '../actions/authedUser'
+class Login extends Component {
 
+    
+    selectedUserId = 0
+   
+
+    handleSelectUserChange = (e) => {
+       this.selectedUserId = e.target.value
     }
-    render(){
-        const {usersIds,users} = this.props
 
-        return(
+    handleLogin = (e)=> {
+        console.log(this.selectedUserId)
+        this.props.dispatch (setAuthedUser(this.selectedUserId))
+   }
+    render() {
+        const { usersIds, users } = this.props
+
+        return (
             <div>
-               <select>
-                  {
-                      usersIds.map((id)=>(
-                          <option key={id} value= {users[id].name}>{users[id].name}</option>
-                            
-                         
-                      ))
-                  }
-               </select>
+                <select onChange={this.handleSelectUserChange}>
+                    {
+                        usersIds.map((id) => (
+                            <option key={id} value={id}>{users[id].name}</option>
+                        ))
+                    }
+                </select>
+                <button onClick={this.handleLogin}>Login</button>
             </div>
         )
     }
 }
 
 
-function mapStateToProps({users}){
-    // const ids = Object.keys(users)
-    // ids.map((id)=>{
-    //     console.log(users[id].name)
-    // })
-    return{
-      usersIds: Object.keys(users),
-      users: users
+function mapStateToProps({ users }) {
+    return {
+        usersIds: Object.keys(users),
+        users: users
     }
-  }
+}
 export default connect(mapStateToProps)(Login)

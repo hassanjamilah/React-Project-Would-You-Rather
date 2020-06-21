@@ -9,7 +9,6 @@ export function handleInitData(){
         .then(
             
             (users) => {
-                console.log(users[0])
                 dispatch(receiveUsers(users))
             }
         )
