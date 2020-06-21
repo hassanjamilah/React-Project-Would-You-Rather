@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
-class Login extends Component {
-
-    
+import {Redirect} from 'react-router-dom'
+import Home from './Home'
+class Login extends Component {    
     selectedUserId = 0
    
-
     handleSelectUserChange = (e) => {
        this.selectedUserId = e.target.value
     }
@@ -16,10 +15,16 @@ class Login extends Component {
         this.props.dispatch (setAuthedUser(this.selectedUserId))
    }
     render() {
-        const { usersIds, users } = this.props
+        const { usersIds, users, authedUser } = this.props
+
+        if (authedUser !== null){
+            return <Redirect to='/home'/>
+        }
 
         return (
+            
             <div>
+               
                 <select onChange={this.handleSelectUserChange}>
                     {
                         usersIds.map((id) => (
@@ -29,15 +34,17 @@ class Login extends Component {
                 </select>
                 <button onClick={this.handleLogin}>Login</button>
             </div>
+            
         )
     }
 }
 
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users , authedUser}) {
     return {
         usersIds: Object.keys(users),
-        users: users
+        users: users, 
+        authedUser: authedUser
     }
 }
 export default connect(mapStateToProps)(Login)
