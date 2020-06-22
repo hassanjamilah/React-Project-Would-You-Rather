@@ -149,7 +149,6 @@ export function _getQuestions () {
 
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
-    alert('add question')
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
     console.log('will add question: ' , question)

@@ -20,11 +20,8 @@ function addQuestion(question){
 }
 
 export function handleAddQuestion( optionOneText, optionTwoText){
-    alert('hassan1')
     return (dispatch, getState) => {
-        const authedUser = getState()
-        //const x = formatQuestion('hassan' , 'jamila','johndoe')
-        //console.log('will add question:' , x)
+        const authedUser = getState().authedUser
         return _saveQuestion({
             author:authedUser,
             optionOneText,
@@ -33,7 +30,6 @@ export function handleAddQuestion( optionOneText, optionTwoText){
         })
         .then((question)=>{
             console.log('receive question:' , question)
-            alert(question)
             dispatch(addQuestion(question))
         })
 

@@ -5,6 +5,7 @@ import Login from './Login'
 import Home from './Home'
 import Leaderboard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
+import {Redirect} from 'react-router-dom'
 
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 class App extends React.Component{
@@ -13,8 +14,10 @@ class App extends React.Component{
     this.props.dispatch(handleInitQuestions())
   }
   render(){
+  
     return (
       <Router>
+        
         <div>
           
           {
@@ -38,9 +41,10 @@ class App extends React.Component{
   }
 }
 
-function mapStateToProps({users}){
+function mapStateToProps({users, authedUser}){
   return {
-    loading: users === null
+    loading: users === null,
+    authedUser
   }
 }
 
