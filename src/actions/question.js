@@ -1,4 +1,4 @@
-import {_saveQuestion} from '../_DATA'
+import {_saveQuestion, formatQuestion} from '../_DATA'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -23,12 +23,16 @@ export function handleAddQuestion( optionOneText, optionTwoText){
     alert('hassan1')
     return (dispatch, getState) => {
         const authedUser = getState()
+        //const x = formatQuestion('hassan' , 'jamila','johndoe')
+        //console.log('will add question:' , x)
         return _saveQuestion({
-            author: 'johndoe',
+            author:authedUser,
             optionOneText,
             optionTwoText
+
         })
         .then((question)=>{
+            console.log('receive question:' , question)
             alert(question)
             dispatch(addQuestion(question))
         })

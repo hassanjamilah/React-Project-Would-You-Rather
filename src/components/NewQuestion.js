@@ -19,6 +19,7 @@ class NewQuestion extends Component{
     }
 
     handleSubmitForm = (e) =>{
+        e.preventDefault()
         const {optionOneValue, optionTwoValue} = this.state
         this.props.dispatch(handleAddQuestion(optionOneValue, optionTwoValue))
         

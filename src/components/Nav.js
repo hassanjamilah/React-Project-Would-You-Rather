@@ -6,9 +6,7 @@ import {Link, Redirect, NavLink} from 'react-router-dom'
 
 class Nav extends Component{
     handleLogout = (e) => {
-        alert ('logout')
       this.props.dispatch(setAuthedUser(null))
-        
     }
 
     render(){
