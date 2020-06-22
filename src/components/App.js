@@ -3,6 +3,9 @@ import {handleInitData, handleInitQuestions} from '../actions/shared'
 import {connect} from 'react-redux'
 import Login from './Login'
 import Home from './Home'
+import Leaderboard from './LeaderBoard'
+import NewQuestion from './NewQuestion'
+
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 class App extends React.Component{
   componentDidMount(){
@@ -13,12 +16,17 @@ class App extends React.Component{
     return (
       <Router>
         <div>
+          
           {
             this.props.loading === true ? 
           <div>Loading...</div> :
+          
           <div>
             <Route path='/' exact component={Login}/>
+            <Route path='/login' exact component={Login}/>
             <Route path='/home' component={Home}/>
+            <Route path='/Leaderboard' component={Leaderboard}/>
+            <Route path='/NewQuestion' component={NewQuestion}/>
           </div>
           }
         </div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import Home from './Home'
+
 class Login extends Component {    
     selectedUserId = 0
    
@@ -24,7 +25,7 @@ class Login extends Component {
         return (
             
             <div>
-               
+               <Link to='/Leaderboard'>Hello</Link>
                 <select onChange={this.handleSelectUserChange}>
                     {
                         usersIds.map((id) => (
