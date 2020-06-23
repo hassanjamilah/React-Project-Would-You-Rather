@@ -17,7 +17,7 @@ class Login extends Component {
    }
     render() {
         const { usersIds, users, authedUser } = this.props
-
+        
         if (authedUser !== null){
             return <Redirect to='/home'/>
         }
@@ -26,7 +26,7 @@ class Login extends Component {
             
             <div>
                <Link to='/Leaderboard'>Hello</Link>
-                <select onChange={this.handleSelectUserChange}>
+                <select onChange={this.handleSelectUserChange} value={users[0]}>
                     {
                         usersIds.map((id) => (
                             <option key={id} value={id}>{users[id].name}</option>

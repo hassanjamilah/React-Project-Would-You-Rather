@@ -1,9 +1,10 @@
 import React, {Component} from 'react' 
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 
 class Question extends Component{
     render(){
+        
         const {question, authedUser} = this.props
         if (authedUser === null){
             return (
@@ -11,13 +12,15 @@ class Question extends Component{
             )
         }
         return(
-            <div>
-                {question.author}
-                <div>{question.timestamp}</div>
-            <div>{question.optionOne.text}</div>
-            <div>{question.optionTwo.text}</div>
-            </div>
-           
+            <Link to={`/question/${question.id}`}>
+                <div>
+                    {question.author}
+                    <div>{question.timestamp}</div>
+                    <div>{question.id}</div>
+                <div>{question.optionOne.text}</div>
+                <div>{question.optionTwo.text}</div>
+                </div>
+            </Link>
         )
     }
 }

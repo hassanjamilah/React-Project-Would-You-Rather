@@ -29,7 +29,7 @@ class NewQuestion extends Component{
         this.setState(()=>({
             optionOneValue:'',
             optionTwoValue:'',
-            toHome:   true
+            toHome:  true
         }))
         
     }

@@ -6,8 +6,9 @@ import Home from './Home'
 import Leaderboard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
 import {Redirect} from 'react-router-dom'
-
+import QuestionDetail from './َQuestionDetail'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+
 class App extends React.Component{
   componentDidMount(){
     this.props.dispatch(handleInitData())
@@ -30,6 +31,7 @@ class App extends React.Component{
             <Route path='/home' component={Home}/>
             <Route path='/Leaderboard' component={Leaderboard}/>
             <Route path='/NewQuestion' component={NewQuestion}/>
+            <Route path='/question/:id' component={QuestionDetail}/>
           </div>
           }
         </div>

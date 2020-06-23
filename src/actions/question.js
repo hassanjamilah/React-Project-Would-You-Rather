@@ -1,8 +1,8 @@
-import {_saveQuestion, formatQuestion} from '../_DATA'
+import {_saveQuestion, _saveQuestionAnswer} from '../_DATA'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
-
+export const TOGGLE_ANSWER = 'TOGGLE_ANSWER'
 
 export function receiveQuestions(questions){
     return {
@@ -37,4 +37,31 @@ export function handleAddQuestion( optionOneText, optionTwoText){
 }
 
 
+function toggleAnswer(quesitonID, answer, authedUser){
+   
+    return {
+        type: TOGGLE_ANSWER,
+        quesitonID,
+        answer,
+        authedUser
+    }
+}
 
+export function handleToggleAnswer(id, answer){
+    return (dispatch, getState) => {
+        const authedUser =  getState().authedUser
+        id = '6ni6ok3ym7mf1p33lnez'
+        console.log('Submit answer:' , id , answer, 'johndoe')
+        dispatch(toggleAnswer(id, answer, authedUser))
+        return _saveQuestionAnswer({
+            authedUser:authedUser,
+            qid:id,
+            answer:answer
+        }
+            )
+            .catch((e) => {
+                alert(e)
+            })
+
+    }
+}
