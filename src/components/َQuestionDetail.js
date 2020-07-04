@@ -33,7 +33,7 @@ class QuestionDetail extends React.Component {
 
     render() {
         const { id, isAnswered } = this.props
-        if (this.props.authedUser === null) {
+        if (this.props.authedUser == null) {
             return (<Redirect to='/' />)
         }
         console.log("The quesiton is answered: ", this.checkIfIsAnsweredQuestion())
@@ -69,9 +69,10 @@ function MapStateToProps({ users, questions, authedUser }, props) {
     const { id } = props.match.params
     const question = questions[id]
     var x = null
+    console.log('🍫 authed user in q details: ' , users[authedUser.id])
     if (authedUser !== null) {
-        x = users[authedUser].answers[id]
-    }
+        x = users[authedUser.id].answers[id]
+    } 
 
 
 

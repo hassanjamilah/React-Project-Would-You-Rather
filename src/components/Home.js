@@ -23,9 +23,7 @@ class Home extends Component {
             viewQuestions = otherQuestions
         }
         //Kick out if the user is not logged in
-        
         if (authedUser === null) {
-            
             return (
                 <Redirect to='/' />
             )
@@ -34,12 +32,19 @@ class Home extends Component {
         return (
             <div>
             <div><Nav/></div>
-                <select onChange={this.handleViewChange}>
+                <select onChange={this.handleViewChange}
+                    style = {{
+                        fontSize:18,
+                        margin: 20,
+                        
+                    }}
+                >
                     <option value='1'>Show Answered Questions</option>
                     <option value='2'>Show UnAnswered Questions</option>
                 </select>
 
-                <ul>
+                <ul 
+               >
                     {
                         viewQuestions.map((q) => (
                             <li key={q.id}><Question id={q.id} /></li>

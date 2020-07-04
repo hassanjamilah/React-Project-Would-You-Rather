@@ -6,45 +6,50 @@ import { Link, Redirect, NavLink } from 'react-router-dom'
 
 class Nav extends Component {
     handleLogout = (e) => {
-        this.props.dispatch(setAuthedUser(null,''))
+        this.props.dispatch(setAuthedUser(null, ''))
     }
 
     render() {
-        const { authedUser } = this.props
-        
+        const { authedUser, user } = this.props
+        console.log('🍱  users in nav: ' , user)
+
         return (
             <div >
 
-                <div style={{marginTop:20}}>
+                <div style={{ marginTop: 20 }}>
                     <NavLink to='/NewQuestion' className='btn-nav'>New Question</NavLink>
                     <NavLink to='/Leaderboard' className='btn-nav'>Leaderboard</NavLink>
                     <button onClick={this.handleLogout} className='btn-logout'>Logout</button>
-                    <img src={authedUser.imageURL} style={styles.avatarImage}></img>
+                    <img src={user.avatarURL} style={styles.avatarImage}></img>
+                    <span style={styles.HelloText}>{'Hello, ' + user.name}</span>
                 </div>
-                
-
-
-                <div>{authedUser.id}</div>
             </div>
 
         )
     }
 }
 
-function mapStateToProps({ users,authedUser , state }) {
+function mapStateToProps({ users, authedUser, state }) {
     console.log('👩🏻‍🏭 users: ' + state)
-    console.log('🥭 authed user: ' + authedUser.imageURL)
     
+
     return {
-        authedUser
+        authedUser,
+        user:users[authedUser.id]
     }
 }
 
 const styles = {
-    avatarImage:{
-        width:30,
-        height:30,
-        float:'right'
+    avatarImage: {
+        width: 30,
+        height: 30,
+        float: 'right'
+    },
+    HelloText: {
+        float: 'right',
+        verticalAlign: 'center',
+        marginTop: 5
+
     }
 }
 

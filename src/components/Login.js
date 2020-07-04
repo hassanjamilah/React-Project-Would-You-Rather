@@ -6,11 +6,13 @@ import Nav from './Nav'
 
 class Login extends Component {    
     selectedUserId = 0
-    selectedImageURL = ''
+    
    
     handleSelectUserChange = (e) => {
+        const id = e.target.value
+        console.log('🥙 ' , this.props.users[id])
        this.selectedUserId = e.target.value
-       this.selectedImageURL = this.props.users[this.props.keys[e.target.value]]
+       
     }
 
     handleLogin = (e)=> {
@@ -18,12 +20,11 @@ class Login extends Component {
         if (this.selectedUserId == 0){
             const keys = Object.keys(users)
             this.selectedUserId = users[keys[0]].id
-            this.selectedImageURL = users[keys[0]].avatarURL
             console.log('selected the first user' , users[keys[0]].id)
 
         }
         console.log(this.selectedUserId)
-        this.props.dispatch (setAuthedUser(this.selectedUserId, this.selectedImageURL))
+        this.props.dispatch (setAuthedUser(this.selectedUserId))
    }
     render() {
         const { usersIds, users, authedUser } = this.props
