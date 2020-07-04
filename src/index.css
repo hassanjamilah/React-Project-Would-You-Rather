@@ -69,7 +69,9 @@ li {
 }
 
 .avatar {
-  height: 50px;
+  height: 10;
+  width: 10;
+  
   border-radius: 25px;
   margin: 10px;
 }
@@ -161,3 +163,58 @@ li {
   font-size: 20px;
   color: #C3392A;
 }
+
+.box{
+
+  font-size: 30;
+  width: 100px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 300px;
+  height: 20px;
+}
+
+.btn-login  {
+ 
+  font-weight: 700;
+  height: 20px;
+  width: 100px;
+}
+
+
+.btn-login :focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+  background-color: #00b5d6;
+}
+
+.btn-nav  {
+ 
+  font-weight: 700;
+  padding-top: 20px;
+  border-width: 3px;
+  color:blue;
+  font-size: large;
+  
+  border-width: 10px;
+  vertical-align: middle;
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+  margin-top: 50px;
+  text-decoration: none;
+}
+
+
+.btn-logout  {
+  outline: 5;
+  font-weight: 700;
+  width: 100px;
+  height: 30px;
+  margin-right: 40px;
+  float: right;
+  
+}
+

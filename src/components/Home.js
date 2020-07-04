@@ -23,7 +23,9 @@ class Home extends Component {
             viewQuestions = otherQuestions
         }
         //Kick out if the user is not logged in
+        
         if (authedUser === null) {
+            
             return (
                 <Redirect to='/' />
             )

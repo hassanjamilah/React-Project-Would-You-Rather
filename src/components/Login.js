@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
 import {Redirect, Link} from 'react-router-dom'
-import Home from './Home'
+import Nav from './Nav'
 
 class Login extends Component {    
     selectedUserId = 0
+    selectedImageURL = ''
    
     handleSelectUserChange = (e) => {
        this.selectedUserId = e.target.value
+       this.selectedImageURL = this.props.users[this.props.keys[e.target.value]]
     }
 
     handleLogin = (e)=> {
@@ -16,31 +18,36 @@ class Login extends Component {
         if (this.selectedUserId == 0){
             const keys = Object.keys(users)
             this.selectedUserId = users[keys[0]].id
+            this.selectedImageURL = users[keys[0]].avatarURL
             console.log('selected the first user' , users[keys[0]].id)
 
         }
         console.log(this.selectedUserId)
-        this.props.dispatch (setAuthedUser(this.selectedUserId))
+        this.props.dispatch (setAuthedUser(this.selectedUserId, this.selectedImageURL))
    }
     render() {
         const { usersIds, users, authedUser } = this.props
-        
-        if (authedUser !== null){
+       
+
+        if (authedUser  != null){
+            
             return <Redirect to='/home'/>
         }
 
         return (
             
             <div>
-               <Link to='/Leaderboard'>Hello</Link>
-                <select onChange={this.handleSelectUserChange} >
+               
+                <select onChange={this.handleSelectUserChange}
+                className="box"
+                >
                     {
                         usersIds.map((id) => (
                             <option key={id} value={id}>{users[id].name}</option>
                         ))
                     }
                 </select>
-                <button onClick={this.handleLogin}>Login</button>
+                <button onClick={this.handleLogin} className="btn-login">Login</button>
             </div>
             
         )
