@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { handleToggleAnswer } from '../actions/question'
 import { Redirect } from 'react-router-dom'
+import {RadioGroup, Radio} from 'react-radio-group'
 
 class QuestionDetail extends React.Component {
     state = {
@@ -19,11 +20,15 @@ class QuestionDetail extends React.Component {
 
     }
 
-    handleChangeOption = (value) => {
-       
+    handleChangeOption = (e) => {
+        console.log('event', e)
         this.setState(()=>({
-            selecteOption:value
+            selecteOption:e.target.value
         }))
+    }
+
+    handleCahnge1 = (e) => {
+        console.log(e)
     }
 
     render() {
@@ -36,22 +41,12 @@ class QuestionDetail extends React.Component {
             return (
 
                 <div >{id}
-                    <label>
-                        <input type="radio" value="option1" 
-                        checked={this.state.selecteOption === 'option1'}
-                        onChange={ this.handleChangeOption('option1')}/>
-                        Option 1
-                     </label>
-                     <label>
-                        <input type="radio" value="option2" 
-
-                        checked={this.state.selecteOption === 'option2'}
-                        onChange={this.handleChangeOption('option2')}
-                        />
-                        
-                        Option 2
-                     </label>
-                    <button onClick={this.handleSumbit}>Submit answer</button>
+                    <form>
+                        <RadioGroup selectedValue='option1' onchange={this.handleCahnge1}>
+                        <Radio value='option1' checked={false}>Option1</Radio>
+                        </RadioGroup>
+                        <button onClick={this.handleSumbit}>Submit answer</button>
+                    </form>
                 </div>
 
             )

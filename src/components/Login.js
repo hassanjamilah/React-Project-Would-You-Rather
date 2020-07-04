@@ -12,6 +12,13 @@ class Login extends Component {
     }
 
     handleLogin = (e)=> {
+        const {users} = this.props
+        if (this.selectedUserId == 0){
+            const keys = Object.keys(users)
+            this.selectedUserId = users[keys[0]].id
+            console.log('selected the first user' , users[keys[0]].id)
+
+        }
         console.log(this.selectedUserId)
         this.props.dispatch (setAuthedUser(this.selectedUserId))
    }
@@ -26,7 +33,7 @@ class Login extends Component {
             
             <div>
                <Link to='/Leaderboard'>Hello</Link>
-                <select onChange={this.handleSelectUserChange} value={users[0]}>
+                <select onChange={this.handleSelectUserChange} >
                     {
                         usersIds.map((id) => (
                             <option key={id} value={id}>{users[id].name}</option>

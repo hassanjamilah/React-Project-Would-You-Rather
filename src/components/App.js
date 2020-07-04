@@ -32,6 +32,7 @@ class App extends React.Component{
             <Route path='/Leaderboard' component={Leaderboard}/>
             <Route path='/NewQuestion' component={NewQuestion}/>
             <Route path='/question/:id' component={QuestionDetail}/>
+            
           </div>
           }
         </div>

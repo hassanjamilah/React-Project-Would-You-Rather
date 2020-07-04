@@ -18,6 +18,7 @@ class Nav extends Component{
                 <button>Leaderboard</button>
                 <div>{authedUser}</div>
                 <NavLink to='/NewQuestion'>New Question</NavLink>
+                <NavLink to='/Leaderboard'>Leaderboard</NavLink>
                 <button onClick={this.handleLogout}>Logout</button>
                 
           
