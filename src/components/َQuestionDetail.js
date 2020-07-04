@@ -42,10 +42,11 @@ class QuestionDetail extends React.Component {
 
                 <div >{id}
                     <form>
-                        <RadioGroup selectedValue='option1' onchange={this.handleCahnge1}>
+                        {/* <RadioGroup selectedValue='option1' onchange={this.handleCahnge1}>
                         <Radio value='option1' checked={false}>Option1</Radio>
-                        </RadioGroup>
+                        </RadioGroup> */}
                         <button onClick={this.handleSumbit}>Submit answer</button>
+                        
                     </form>
                 </div>
 
@@ -66,6 +67,9 @@ class QuestionDetail extends React.Component {
 }
 
 function MapStateToProps({ users, questions, authedUser }, props) {
+    if (authedUser == null){
+        return
+    }
     const { id } = props.match.params
     const question = questions[id]
     var x = null

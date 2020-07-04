@@ -64,8 +64,8 @@ function mapStateToProps({ questions, authedUser }) {
         const question = questions[id]
         console.log()
         if (
-            question.optionOne.votes.includes(authedUser) ||
-            question.optionTwo.votes.includes(authedUser)
+            question.optionOne.votes.includes(authedUser.id) ||
+            question.optionTwo.votes.includes(authedUser.id)
         ) {
 
             answerdQuestions.push(question)
