@@ -28,7 +28,7 @@ export default function  quesions (state={}, action){
                         ...state[action.quesitonID],
                         optionOne:{
                             text:state[action.quesitonID].optionOne.text,
-                            votes:x
+                            votes:state[action.quesitonID].optionOne.votes.concat([action.authedUser])
                         }
     
                     }
@@ -40,7 +40,7 @@ export default function  quesions (state={}, action){
                         ...state[action.quesitonID],
                         optionTwo:{
                             text:state[action.quesitonID].optionTwo.text,
-                            votes:state[action.quesitonID].optionTwo.votes.push(action.authedUser.id)
+                            votes:state[action.quesitonID].optionTwo.votes.concat([action.authedUser])
                         }
     
                     }
