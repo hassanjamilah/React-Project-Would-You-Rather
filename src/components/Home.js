@@ -6,7 +6,7 @@ import Nav from './Nav'
 import { Redirect } from 'react-router-dom'
 class Home extends Component {
 
-    showOnlyAnswered = true
+    showOnlyAnswered = false
 
     handleViewChange = (e) => {
         const x = e.target.value
@@ -31,20 +31,21 @@ class Home extends Component {
 
         return (
             <div>
-            <div><Nav/></div>
+                <div><Nav /></div>
                 <select onChange={this.handleViewChange}
-                    style = {{
-                        fontSize:18,
+                    style={{
+                        fontSize: 18,
                         margin: 20,
-                        
+
                     }}
                 >
-                    <option value='1'>Show Answered Questions</option>
                     <option value='2'>Show UnAnswered Questions</option>
+                    <option value='1'>Show Answered Questions</option>
+
                 </select>
 
-                <ul 
-               >
+                <ul
+                >
                     {
                         viewQuestions.map((q) => (
                             <li key={q.id}><Question id={q.id} /></li>
@@ -57,13 +58,13 @@ class Home extends Component {
 }
 
 function mapStateToProps({ questions, authedUser }) {
-   
+
     const ids = Object.keys(questions)
     var answerdQuestions = []
     var otherQuestions = []
     ids.map((id) => {
         const question = questions[id]
-        console.log('🧃 ' , question)
+        console.log('🧃 ', question)
         if (
             question.optionOne.votes.includes(authedUser.id) ||
             question.optionTwo.votes.includes(authedUser.id)

@@ -13,6 +13,7 @@ export function receiveQuestions(questions){
 }
 
 function addQuestion(question){
+    console.log('🍎🍎🍎🍎🍎 receive question in add question:' , question)
     return {
         type: ADD_QUESTION,
         question
@@ -21,15 +22,15 @@ function addQuestion(question){
 
 export function handleAddQuestion( optionOneText, optionTwoText){
     return (dispatch, getState) => {
-        const authedUser = getState().authedUser
-        return _saveQuestion({
+        const authedUser = getState().authedUser.id
+       _saveQuestion({
             author:authedUser,
             optionOneText,
             optionTwoText
 
         })
         .then((question)=>{
-            console.log('receive question:' , question)
+            console.log('🍎🍎🍎🍎🍎 receive question:' , question)
             dispatch(addQuestion(question))
         })
 

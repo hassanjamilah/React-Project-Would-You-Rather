@@ -8,10 +8,11 @@ export default function  quesions (state={}, action){
                 ...action.questions
             }
         case ADD_QUESTION:
+            console.log('🍌 the questioN: ' , action.question)
             return {
                 ...state,
                 [action.question.id]:action.question,
-                ...action.quesion.id
+               // ...action.question.id
             }
 
         case TOGGLE_ANSWER:
