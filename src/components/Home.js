@@ -80,8 +80,8 @@ function mapStateToProps({ questions, authedUser }) {
     console.log('other questions', otherQuestions)
     return {
         questionsIds: Object.keys(questions),
-        otherQuestions: otherQuestions,
-        answerdQuestions: answerdQuestions,
+        otherQuestions: otherQuestions.sort((a,b) => b.timestamp - a.timestamp),
+        answerdQuestions: answerdQuestions.sort((a,b) => b.timestamp - a.timestamp),
         authedUser: authedUser,
         show1: true
     }
