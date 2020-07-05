@@ -38,7 +38,7 @@ export function handleAddQuestion( optionOneText, optionTwoText){
 
 
 function toggleAnswer(quesitonID, answer, authedUser){
-   
+    
     return {
         type: TOGGLE_ANSWER,
         quesitonID,
@@ -50,9 +50,9 @@ function toggleAnswer(quesitonID, answer, authedUser){
 export function handleToggleAnswer(id, answer){
     return (dispatch, getState) => {
         const authedUser =  getState().authedUser
-        id = '6ni6ok3ym7mf1p33lnez'
+      
         console.log('Submit answer:' , id , answer, 'johndoe')
-        dispatch(toggleAnswer(id, answer, authedUser))
+        dispatch(toggleAnswer(id, answer, authedUser.id))
         return _saveQuestionAnswer({
             authedUser:authedUser,
             qid:id,

@@ -15,6 +15,12 @@ export default function  quesions (state={}, action){
             }
 
         case TOGGLE_ANSWER:
+            
+            console.log('🍨 the question is : ' , state[action.quesitonID])
+            console.log('🍨 the question votes are : ' , state[action.quesitonID].optionOne.votes)
+            console.log('🍨 the question authed user are : ' , action.authedUser)
+            const x =  state[action.quesitonID].optionOne.votes.concat([action.authedUser])
+            console.log('🍨 the question votes concat are : ' ,x)
             if (action.answer === 'optionOne'){
                 return {
                     ...state,
@@ -22,7 +28,7 @@ export default function  quesions (state={}, action){
                         ...state[action.quesitonID],
                         optionOne:{
                             text:state[action.quesitonID].optionOne.text,
-                            votes:state[action.quesitonID].optionOne.votes.concat([action.authedUser])
+                            votes:x
                         }
     
                     }
@@ -34,7 +40,7 @@ export default function  quesions (state={}, action){
                         ...state[action.quesitonID],
                         optionTwo:{
                             text:state[action.quesitonID].optionTwo.text,
-                            votes:state[action.quesitonID].optionTwo.votes.concat([action.authedUser])
+                            votes:state[action.quesitonID].optionTwo.votes.push(action.authedUser.id)
                         }
     
                     }

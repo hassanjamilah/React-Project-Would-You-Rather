@@ -62,7 +62,7 @@ function mapStateToProps({ questions, authedUser }) {
     var otherQuestions = []
     ids.map((id) => {
         const question = questions[id]
-        console.log()
+        console.log('🧃 ' , question)
         if (
             question.optionOne.votes.includes(authedUser.id) ||
             question.optionTwo.votes.includes(authedUser.id)

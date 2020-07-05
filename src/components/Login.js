@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
 import {Redirect, Link} from 'react-router-dom'
-import Nav from './Nav'
+import Temp from './Temp'
 
 class Login extends Component {    
     selectedUserId = 0
@@ -49,6 +49,7 @@ class Login extends Component {
                     }
                 </select>
                 <button onClick={this.handleLogin} className="btn-login">Login</button>
+                <Temp/>
             </div>
             
         )

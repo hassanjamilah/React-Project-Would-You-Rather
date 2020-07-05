@@ -172,15 +172,15 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
-  console.log('authed question in save answer: ' , qid)
+  console.log('🥗 authed question in save answer: ' , authedUser)
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
         ...users,
         [authedUser]: {
-          ...users[authedUser],
+          ...users[authedUser.id],
           answers: {
-            ...users[authedUser].answers,
+            ...users[authedUser.id].answers,
             [qid]: answer
           }
         }
@@ -192,7 +192,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...questions[qid],
           [answer]: {
             ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+            votes: questions[qid][answer].votes.concat([authedUser.id])
           }
         }
       }

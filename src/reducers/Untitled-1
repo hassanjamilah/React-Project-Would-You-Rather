@@ -1,0 +1,29 @@
+   <div style={{flexDirection:'row'}}>
+                
+                <img 
+                src={users[question.author].avatarURL}
+                    style={{
+                        width:20,
+                        height:20,
+                        alignSelf:'center'
+                    }}
+                ></img>
+                <div>Hello</div>
+                <div>
+    <p></p> style="float: left;"><img src="http://placekitten.com/g/200/200" height="200px" width="200px" border="1px"></p>
+    <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
+</div>
+
+                <Card.Img 
+                    ></Card.Img>
+                <Card style={{backgroundColor:'red',width:200,borderWidth:50,borderColor:'black'}}>
+                    
+                    <Card.Text >Would you rather?</Card.Text>
+                    <Card.Text>{question.optionOne.text}</Card.Text>
+                </Card>
+                    {question.author}
+                    <div>{question.timestamp}</div>
+                    <div>{question.id}</div>
+               
+                <div>{question.optionTwo.text}</div>
+                </div>

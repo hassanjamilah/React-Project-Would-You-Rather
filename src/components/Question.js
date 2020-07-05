@@ -48,6 +48,7 @@ class Question extends Component {
                         <div style={{ paddingTop:3}}>
                             <h2 >Would you rather?</h2>
                             <h4>{question.optionOne.text}</h4>
+                            
                         </div>
                     </div>
 
