@@ -57,6 +57,7 @@ class Home extends Component {
 }
 
 function mapStateToProps({ questions, authedUser }) {
+   
     const ids = Object.keys(questions)
     var answerdQuestions = []
     var otherQuestions = []
