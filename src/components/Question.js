@@ -7,6 +7,15 @@ class Question extends Component {
     render() {
 
         const { question, authedUser, users } = this.props
+        if (typeof question === 'undefined'){
+            return(
+                <div>
+                    Error 404
+                    <p>The question not found</p>
+                </div>
+                
+            )
+        }
         if (authedUser === null) {
             return (
                 <Redirect to='/' />

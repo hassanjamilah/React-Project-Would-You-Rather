@@ -6,6 +6,15 @@ import { Card } from 'react-bootstrap'
 class QuestionAnswered extends Component {
     render() {
         const { question, authedUser, users, usersCount, optionOneVotes, optionTwoVotes } = this.props
+        if (typeof question === 'undefined'){
+            return(
+                <div>
+                    Error 404
+                    <p>The question not found</p>
+                </div>
+                
+            )
+        }
         if (authedUser === null) {
             return (
                 <Redirect to='/' />
