@@ -49,12 +49,30 @@ class NewQuestion extends Component{
             <Nav/>
                 <form onSubmit={this.handleSubmitForm}>
                    
-                    <input type='text' id='option1' onChange={this.handleChange} value={optionOneValue}/>
-                    <input type='text' id='option2' onChange={this.handleChange} value={optionTwoValue}/>
-                    <button type='submit' disabled={optionOneValue==='' || optionTwoValue ===''}>Submit</button>
+                    <div>
+                        <input style={styles.textInput} type='text' id='option1' onChange={this.handleChange} value={optionOneValue}/>
+                    </div>
+                    <div>
+                        <input style={styles.textInput} type='text' id='option2' onChange={this.handleChange} value={optionTwoValue}/>
+                    </div>
+                    
+                    <button  style= {styles.submitButton} type='submit' disabled={optionOneValue==='' || optionTwoValue ===''}>Submit</button>
                 </form>
             </div>
         )
+    }
+}
+
+const styles = {
+    textInput:{
+        margin:10,
+        height:20,
+        width:'50%'
+    },
+    submitButton:{
+        margin:10,
+        width:75,
+        height:30,
     }
 }
 

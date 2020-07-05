@@ -6,6 +6,7 @@ class User extends React.Component{
         const {user} = this.props
         return (
             <div>
+            <img src={user.avatarURL}></img>
             <div>{user.name}</div>
             <div>{user.sum}</div>
             </div>

@@ -49,7 +49,7 @@ class Login extends Component {
                     }
                 </select>
                 <button onClick={this.handleLogin} className="btn-login">Login</button>
-                <Temp/>
+               
             </div>
             
         )
