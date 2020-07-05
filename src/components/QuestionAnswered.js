@@ -41,7 +41,8 @@ class QuestionAnswered extends Component {
                                    this.props.optionOneSelected ?  styles.optionTextSelected:styles.optionText
                             }>
                                 {question.optionOne.text}
-                                <p>Votes Percent: {(optionOneVotes/usersCount*100).toFixed(2)}%        {optionOneVotes}/{usersCount}</p>
+                                <p>Percent of people Votes Percent: {(optionOneVotes/usersCount*100).toFixed(2)}%       {optionOneVotes}/{usersCount}</p>
+                                <p>Number of people voted:  {optionOneVotes}/{usersCount}</p>
                             </div>
                             <div
                             style={
@@ -84,13 +85,13 @@ const styles = {
     container:{
         backgroundColor:'#DCDCDC',
         width:500,
-        height:20,
+        height:50,
         paddingTop:10
       
     },
     containerMain:{
         backgroundColor: '#F0F0F0',
-        height: 230,
+        height: 300,
         width: 500,
         margin:10
     } ,
@@ -106,7 +107,7 @@ const styles = {
         margin:10,
        backgroundColor:'#E8E8E8',
         width:350,
-        height:60,
+        height:90,
         marginLeft:110,
         paddingTop:10,
         paddingLeft:10
@@ -115,7 +116,7 @@ const styles = {
         margin:10,
         backgroundColor:'#66CDAA',
         width:350,
-        height:60,
+        height:90,
         marginLeft:110,
         paddingTop:10,
         paddingLeft:10
