@@ -28,11 +28,11 @@ class Login extends Component {
    }
     render() {
         const { usersIds, users, authedUser } = this.props
-       
+       const {from} = this.props.location.state || { from:{pathname:'/home'}}
 
         if (authedUser  != null){
             
-            return <Redirect to='/home'/>
+            return <Redirect to={from}/>
         }
 
         return (

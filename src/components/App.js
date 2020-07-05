@@ -14,6 +14,14 @@ class App extends React.Component{
     this.props.dispatch(handleInitData())
     this.props.dispatch(handleInitQuestions())
   }
+  
+  PrivateRoute = ({component: Component, ...rest})=>(
+    <Route {...rest} render={(props) => (
+      this.props.authedUser  != null
+        ? <Component {...props} />
+        : <Redirect to='/login' />
+    )} />
+  )
   render(){
   
     return (
@@ -29,7 +37,7 @@ class App extends React.Component{
             <Route path='/' exact component={Login}/>
             <Route path='/login' exact component={Login}/>
             <Route path='/home' component={Home}/>
-            <Route path='/Leaderboard' component={Leaderboard}/>
+            <this.PrivateRoute path='/Leaderboard' component={Leaderboard}/>
             <Route path='/NewQuestion' component={NewQuestion}/>
             <Route path='/question/:id' component={QuestionDetail}/>
             
