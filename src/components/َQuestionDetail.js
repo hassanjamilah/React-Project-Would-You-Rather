@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleToggleAnswer } from '../actions/question'
 import { Redirect } from 'react-router-dom'
 import Nav from './Nav'
+import QuestionAnswered from './QuestionAnswered'
 
 class QuestionDetail extends React.Component {
     state = {
@@ -118,7 +119,8 @@ class QuestionDetail extends React.Component {
             return (
                 <div >
                     <Nav />
-                    <div>{isAnswered}</div>
+                    <QuestionAnswered id={id}/>
+                   
                 </div>
             )
         }
