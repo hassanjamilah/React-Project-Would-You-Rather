@@ -66,6 +66,7 @@ class QuestionDetail extends React.Component {
     AuthorView = () => {
         const { users, question } = this.props
         const user = users[question.author]
+
         return (
             <div
                 style={{
@@ -103,11 +104,20 @@ class QuestionDetail extends React.Component {
 
 
     render() {
-        const { id, isAnswered } = this.props
+        const { id, isAnswered, question} = this.props
         if (this.props.authedUser == null) {
             return (<Redirect to='/' />)
         }
 
+        if (typeof question === 'undefined') {
+            return (
+                <div>
+                    <Nav />
+                    <div>Error 404</div>
+                    <div>The required question is not exist</div>
+                </div>
+            )
+        }
         if (isAnswered == null) {
             return (
                 <div >
@@ -130,7 +140,7 @@ class QuestionDetail extends React.Component {
 function MapStateToProps({ users, questions, authedUser }, props) {
     console.log('🍑🍑🍑🍑 The properties: ', window.location.pathname)
     const s = window.location.pathname;
-    const id = s.replace('/question/' , '')
+    const id = s.replace('/question/', '')
     console.log('🍑🍑🍑🍑 The properties: ', id)
     if (authedUser == null) {
         return
