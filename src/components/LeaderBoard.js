@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import User from './User'
 import Nav from './Nav'
 class LeaderBoard extends Component {
@@ -32,15 +32,37 @@ class LeaderBoard extends Component {
 
 
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users, authedUser, questions }) {
     const userIDs = Object.keys(users)
     var AllUsers = []
     userIDs.map((id) => {
-        const allAnswers = Object.keys(users[id].answers)
-        const allQuestions = users[id].questions
+
+
+
+        const userID = id
+        const keys = Object.keys(questions)
+        var numQuesitons = 0, numAnswers = 0
+        keys.map((key) => {
+            const votes1 = questions[key].optionOne.votes
+            const votes2 = questions[key].optionTwo.votes
+            const author = questions[key].author
+            if (author === userID) {
+                console.log('🍗🍗🍗🍗🍗 The properties: quesiton')
+                numQuesitons = numQuesitons + 1
+            }
+            if (votes1.includes(userID) || votes2.includes(userID)) {
+                console.log('🍗🍗🍗🍗🍗 The properties: answer')
+                numAnswers = numAnswers + 1
+            }
+
+
+        })
+
         AllUsers.push({
             ...users[id],
-            sum: allQuestions.length + allAnswers.length
+            sum: numAnswers + numAnswers,
+           numQuesitons,
+           numAnswers
 
         })
     })

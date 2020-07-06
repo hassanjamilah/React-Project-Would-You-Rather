@@ -7,7 +7,8 @@ import QuestionAnswered from './QuestionAnswered'
 
 class QuestionDetail extends React.Component {
     state = {
-        firstSelected: true
+        firstSelected: true, 
+        submitRedirect:false
     }
 
     radioSelected = (value) => {
@@ -23,8 +24,10 @@ class QuestionDetail extends React.Component {
         e.preventDefault()
         const { id, authedUser } = this.props
         this.props.dispatch(handleToggleAnswer(id, 'optionOne'))
-        this.props.history.goBack()
-
+        //this.props.history.goBack()
+        this.setState(()=>({
+            submitRedirect:true
+        }))
     }
 
 
@@ -66,7 +69,9 @@ class QuestionDetail extends React.Component {
     AuthorView = () => {
         const { users, question } = this.props
         const user = users[question.author]
-
+        if (this.state.submitRedirect === true){
+            return <Redirect to='/home'/>
+        }
         return (
             <div
                 style={{
