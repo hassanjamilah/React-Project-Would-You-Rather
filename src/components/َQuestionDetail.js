@@ -107,7 +107,7 @@ class QuestionDetail extends React.Component {
         if (this.props.authedUser == null) {
             return (<Redirect to='/' />)
         }
-        
+
         if (isAnswered == null) {
             return (
                 <div >
@@ -119,8 +119,8 @@ class QuestionDetail extends React.Component {
             return (
                 <div >
                     <Nav />
-                    <QuestionAnswered id={id}/>
-                   
+                    <QuestionAnswered id={id} />
+
                 </div>
             )
         }
@@ -128,11 +128,15 @@ class QuestionDetail extends React.Component {
 }
 
 function MapStateToProps({ users, questions, authedUser }, props) {
-
+    console.log('🍑🍑🍑🍑 The properties: ', window.location.pathname)
+    const s = window.location.pathname;
+    const id = s.replace('/question/' , '')
+    console.log('🍑🍑🍑🍑 The properties: ', id)
     if (authedUser == null) {
         return
     }
-    const { id } = props.match.params
+
+    //const { id } = props.match.params
     const question = questions[id]
     console.log('🥮 Question', question)
     var x = null

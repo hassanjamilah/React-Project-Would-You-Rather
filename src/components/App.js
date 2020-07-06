@@ -44,7 +44,7 @@ class App extends React.Component {
                 <Route path='/home' component={Home} />
                 <this.PrivateRoute path='/Leaderboard' component={Leaderboard} />
                 <this.PrivateRoute path='/NewQuestion' component={NewQuestion} />
-                <Route path='/question/:id' component={QuestionDetail} />
+                <this.PrivateRoute path='/question/:id' component={QuestionDetail} />
 
               </div>
           }
