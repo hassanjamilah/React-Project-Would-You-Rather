@@ -15,6 +15,13 @@ class Home extends Component {
     }
     render() {
         const { otherQuestions, answerdQuestions, authedUser } = this.props
+       
+        if (authedUser === null || typeof authedUser === 'undefined') {
+            return (
+                <Redirect to='/' />
+            )
+        }
+       
 
         var viewQuestions = []
         if (this.showOnlyAnswered === true) {
@@ -23,11 +30,7 @@ class Home extends Component {
             viewQuestions = otherQuestions
         }
         //Kick out if the user is not logged in
-        if (authedUser === null) {
-            return (
-                <Redirect to='/' />
-            )
-        }
+      
 
         return (
             <div>
@@ -59,6 +62,9 @@ class Home extends Component {
 
 function mapStateToProps({ questions, authedUser }) {
 
+    if (authedUser == null){
+        return
+    }
     const ids = Object.keys(questions)
     var answerdQuestions = []
     var otherQuestions = []

@@ -123,7 +123,8 @@ class QuestionDetail extends React.Component {
                 </div>
             )
         }
-        if (isAnswered == null) {
+        
+        if (isAnswered == false) {
             return (
                 <div >
                     <Nav />
@@ -156,10 +157,19 @@ function MapStateToProps({ users, questions, authedUser }, props) {
     console.log('🥮 Question', question)
     var x = null
     console.log('🍫 authed user in q details: ', users[authedUser.id])
+    var isAnswered = false;
     if (authedUser !== null) {
         x = users[authedUser.id].answers[id]
-    }
 
+           
+            const votes1 = question.optionOne.votes
+            const votes2 = question.optionTwo.votes
+            if (votes1.includes(authedUser.id) || votes2.includes(authedUser.id)){
+                isAnswered = true
+            }
+      
+    }
+    
 
 
     return {
@@ -167,7 +177,7 @@ function MapStateToProps({ users, questions, authedUser }, props) {
         authedUser,
         question: question,
         users,
-        isAnswered: x
+        isAnswered: isAnswered
 
     }
 
