@@ -17,6 +17,7 @@ class Nav extends Component {
             <div >
 
                 <div style={{ marginTop: 20 }}>
+                    <NavLink to='/home' className='btn-nav'>Home</NavLink>
                     <NavLink to='/NewQuestion' className='btn-nav'>New Question</NavLink>
                     <NavLink to='/Leaderboard' className='btn-nav'>Leaderboard</NavLink>
                     <button onClick={this.handleLogout} className='btn-logout'>Logout</button>
