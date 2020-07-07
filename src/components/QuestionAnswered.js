@@ -117,7 +117,7 @@ const styles = {
         backgroundColor:'#66CDAA',
         width:350,
         height:90,
-        marginLeft:110,
+        marginLefgitt:110,
         paddingTop:10,
         paddingLeft:10
     }
