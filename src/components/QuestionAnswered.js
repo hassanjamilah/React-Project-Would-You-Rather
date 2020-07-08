@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom'
-import { Card } from 'react-bootstrap'
+
 
 class QuestionAnswered extends Component {
     render() {
