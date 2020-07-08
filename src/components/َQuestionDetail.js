@@ -110,6 +110,15 @@ class QuestionDetail extends React.Component {
 
     render() {
         const { id, isAnswered, question} = this.props
+        if (typeof question === 'undefined'){
+            return(
+                <div>
+                <Nav/>
+                <div>Error 401</div>
+                <div>Can not find the question</div>
+                </div>
+            )
+        }
         if (this.props.authedUser == null) {
             return (<Redirect to='/' />)
         }
@@ -151,9 +160,13 @@ function MapStateToProps({ users, questions, authedUser }, props) {
     if (authedUser == null) {
         return
     }
+    const question = questions[id]
+    if (typeof question === 'undefined'){
+        return
+    }
 
     //const { id } = props.match.params
-    const question = questions[id]
+   
     console.log('🥮 Question', question)
     var x = null
     console.log('🍫 authed user in q details: ', users[authedUser.id])
